@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Microservices Frontend</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+
+  <h1>Frontend is running 🚀</h1>
+  <p>This is your Azure Static Web App</p>
+
+  <button onclick="checkBackend()">Check Backend</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkBackend() {
+      fetch("https://gateway.victoriousstone-e1cf51dd.southeastasia.azurecontainerapps.io/")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("result").innerText = "Backend Status: " + data.status;
+        })
+        .catch(() => {
+          document.getElementById("result").innerText = "Backend not reachable ❌";
+        });
+    }
+  </script>
+
+</body>
+</html>
